@@ -36,6 +36,16 @@ export async function fetchExchangeRequests(
   registeredDay?: string,
   desiredDay?: string
 ): Promise<ExchangeRequest[]> {
+  // Debug: print all incoming filter params
+  console.log('fetchExchangeRequests params:', {
+    registeredCourse,
+    desiredCourse,
+    search,
+    registeredStart,
+    desiredStart,
+    registeredDay,
+    desiredDay
+  });
   // Build SQL WHERE clauses
   const clauses = [];
   const params: any[] = [];
@@ -83,7 +93,8 @@ export async function fetchExchangeRequests(
   }
   const where = clauses.length ? 'WHERE ' + clauses.join(' AND ') : '';
   const query = `SELECT * FROM exchange_requests ${where} ORDER BY name ASC`;
-  const rows = await sql.unsafe(query, ...params);
+  console.log('SQL Query:', query, 'Params:', params);
+  const rows = await sql.unsafe(query, params);
   // Map DB rows to ExchangeRequest shape
   return rows.map((row: any) => ({
     id: row.id,
