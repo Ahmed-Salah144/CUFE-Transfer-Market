@@ -24,63 +24,6 @@ const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
 // Sample data for exchange requests
 export const sampleExchangeRequests: ExchangeRequest[] = [
   // ...existing 10 entries...
-  {
-    id: '11', name: 'Liam Smith', contact: 'liam.smith@example.com', registeredCourse: CourseCode.MATH101, desiredCourse: CourseCode.PHYS202, registeredTimeslot: { day: 'Wed', from: '8am', to: '9am' }, desiredTimeslot: { day: 'Thu', from: '10am', to: '11am' }, status: RequestStatus.Pending,
-  },
-  {
-    id: '12', name: 'Mia Brown', contact: 'mia.brown@example.com', registeredCourse: CourseCode.CS404, desiredCourse: CourseCode.CHEM303, registeredTimeslot: { day: 'Mon', from: '9am', to: '10am' }, desiredTimeslot: { day: 'Tue', from: '11am', to: '12pm' }, status: RequestStatus.Completed,
-  },
-  {
-    id: '13', name: 'Noah Lee', contact: 'noah.lee@example.com', registeredCourse: CourseCode.BIO505, desiredCourse: CourseCode.MATH101, registeredTimeslot: { day: 'Fri', from: '10am', to: '11am' }, desiredTimeslot: { day: 'Wed', from: '12pm', to: '1pm' }, status: RequestStatus.Pending,
-  },
-  {
-    id: '14', name: 'Olivia Green', contact: 'olivia.green@example.com', registeredCourse: CourseCode.PHYS202, desiredCourse: CourseCode.CS404, registeredTimeslot: { day: 'Thu', from: '11am', to: '12pm' }, desiredTimeslot: { day: 'Mon', from: '1pm', to: '2pm' }, status: RequestStatus.Pending,
-  },
-  {
-    id: '15', name: 'Paul White', contact: 'paul.white@example.com', registeredCourse: CourseCode.CHEM303, desiredCourse: CourseCode.BIO505, registeredTimeslot: { day: 'Tue', from: '12pm', to: '1pm' }, desiredTimeslot: { day: 'Fri', from: '2pm', to: '3pm' }, status: RequestStatus.Pending,
-  },
-  {
-    id: '16', name: 'Quinn Black', contact: 'quinn.black@example.com', registeredCourse: CourseCode.MATH101, desiredCourse: CourseCode.CHEM303, registeredTimeslot: { day: 'Wed', from: '1pm', to: '2pm' }, desiredTimeslot: { day: 'Thu', from: '3pm', to: '4pm' }, status: RequestStatus.Completed,
-  },
-  {
-    id: '17', name: 'Ruby Lin', contact: 'ruby.lin@example.com', registeredCourse: CourseCode.PHYS202, desiredCourse: CourseCode.MATH101, registeredTimeslot: { day: 'Mon', from: '2pm', to: '3pm' }, desiredTimeslot: { day: 'Tue', from: '4pm', to: '5pm' }, status: RequestStatus.Pending,
-  },
-  {
-    id: '18', name: 'Sam Ford', contact: 'sam.ford@example.com', registeredCourse: CourseCode.CS404, desiredCourse: CourseCode.PHYS202, registeredTimeslot: { day: 'Fri', from: '3pm', to: '4pm' }, desiredTimeslot: { day: 'Wed', from: '8am', to: '9am' }, status: RequestStatus.Pending,
-  },
-  {
-    id: '19', name: 'Tina Chen', contact: 'tina.chen@example.com', registeredCourse: CourseCode.BIO505, desiredCourse: CourseCode.CS404, registeredTimeslot: { day: 'Thu', from: '4pm', to: '5pm' }, desiredTimeslot: { day: 'Mon', from: '9am', to: '10am' }, status: RequestStatus.Completed,
-  },
-  {
-    id: '20', name: 'Uma Black', contact: 'uma.black@example.com', registeredCourse: CourseCode.CHEM303, desiredCourse: CourseCode.PHYS202, registeredTimeslot: { day: 'Tue', from: '5pm', to: '6pm' }, desiredTimeslot: { day: 'Fri', from: '10am', to: '11am' }, status: RequestStatus.Pending,
-  },
-  {
-    id: '21', name: 'Victor Stone', contact: 'victor.stone@example.com', registeredCourse: CourseCode.PHYS202, desiredCourse: CourseCode.CS404, registeredTimeslot: { day: 'Wed', from: '6pm', to: '7pm' }, desiredTimeslot: { day: 'Thu', from: '8am', to: '9am' }, status: RequestStatus.Pending,
-  },
-  {
-    id: '22', name: 'Wendy Park', contact: 'wendy.park@example.com', registeredCourse: CourseCode.BIO505, desiredCourse: CourseCode.CHEM303, registeredTimeslot: { day: 'Mon', from: '7pm', to: '8pm' }, desiredTimeslot: { day: 'Tue', from: '9am', to: '10am' }, status: RequestStatus.Completed,
-  },
-  {
-    id: '23', name: 'Xander Cruz', contact: 'xander.cruz@example.com', registeredCourse: CourseCode.CS404, desiredCourse: CourseCode.MATH101, registeredTimeslot: { day: 'Fri', from: '8am', to: '9am' }, desiredTimeslot: { day: 'Wed', from: '11am', to: '12pm' }, status: RequestStatus.Pending,
-  },
-  {
-    id: '24', name: 'Yara Patel', contact: 'yara.patel@example.com', registeredCourse: CourseCode.MATH101, desiredCourse: CourseCode.BIO505, registeredTimeslot: { day: 'Thu', from: '9am', to: '10am' }, desiredTimeslot: { day: 'Mon', from: '12pm', to: '1pm' }, status: RequestStatus.Pending,
-  },
-  {
-    id: '25', name: 'Zane Kim', contact: 'zane.kim@example.com', registeredCourse: CourseCode.CHEM303, desiredCourse: CourseCode.PHYS202, registeredTimeslot: { day: 'Tue', from: '10am', to: '11am' }, desiredTimeslot: { day: 'Fri', from: '1pm', to: '2pm' }, status: RequestStatus.Completed,
-  },
-  {
-    id: '26', name: 'Ava Lee', contact: 'ava.lee@example.com', registeredCourse: CourseCode.PHYS202, desiredCourse: CourseCode.CS404, registeredTimeslot: { day: 'Wed', from: '11am', to: '12pm' }, desiredTimeslot: { day: 'Thu', from: '2pm', to: '3pm' }, status: RequestStatus.Pending,
-  },
-  {
-    id: '27', name: 'Ben Fox', contact: 'ben.fox@example.com', registeredCourse: CourseCode.BIO505, desiredCourse: CourseCode.MATH101, registeredTimeslot: { day: 'Mon', from: '12pm', to: '1pm' }, desiredTimeslot: { day: 'Tue', from: '3pm', to: '4pm' }, status: RequestStatus.Pending,
-  },
-  {
-    id: '28', name: 'Cara Moon', contact: 'cara.moon@example.com', registeredCourse: CourseCode.CS404, desiredCourse: CourseCode.CHEM303, registeredTimeslot: { day: 'Fri', from: '1pm', to: '2pm' }, desiredTimeslot: { day: 'Wed', from: '4pm', to: '5pm' }, status: RequestStatus.Completed,
-  },
-  {
-    id: '29', name: 'Derek Wolf', contact: 'derek.wolf@example.com', registeredCourse: CourseCode.MATH101, desiredCourse: CourseCode.PHYS202, registeredTimeslot: { day: 'Thu', from: '2pm', to: '3pm' }, desiredTimeslot: { day: 'Mon', from: '5pm', to: '6pm' }, status: RequestStatus.Pending,
-  },
 ];
 
 // Fetch all exchange requests
