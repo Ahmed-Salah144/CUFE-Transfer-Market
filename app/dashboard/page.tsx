@@ -10,8 +10,8 @@ import Search from '@/app/ui/search';
 
 
 
-export default async function Page({ searchParams = {} }: {
-  searchParams?: {
+type DashboardPageProps = {
+  searchParams?: Promise<{
     registeredCourse?: string;
     desiredCourse?: string;
     search?: string;
@@ -20,23 +20,25 @@ export default async function Page({ searchParams = {} }: {
     registeredDay?: string;
     desiredDay?: string;
     page?: string | number;
-  };
-}) {
-  const params = searchParams || {};
+  }>;
+};
+
+export default async function Page({ searchParams }: DashboardPageProps) {
+  const params = (await searchParams) ?? {};
   // Normalize 'Any' and empty values for filtering
-  const normalizeCourseFilter = (val: string | undefined) => {
+  const normalizeCourseFilter = (val: string | null | undefined) => {
     if (!val || val === '' || val.toLowerCase() === 'any') return undefined;
     return val;
   };
-  const registeredCourse = normalizeCourseFilter(params?.registeredCourse) as CourseCode | undefined;
-  const desiredCourse = normalizeCourseFilter(params?.desiredCourse) as CourseCode | undefined;
-  const search = params?.search || '';
-  const registeredStart = params?.registeredStart || '';
-  const desiredStart = params?.desiredStart || '';
-  const registeredDay = params?.registeredDay || '';
-  const desiredDay = params?.desiredDay || '';
+  const registeredCourse = normalizeCourseFilter(params.registeredCourse) as CourseCode | undefined;
+  const desiredCourse = normalizeCourseFilter(params.desiredCourse) as CourseCode | undefined;
+  const search = params.search || '';
+  const registeredStart = params.registeredStart || '';
+  const desiredStart = params.desiredStart || '';
+  const registeredDay = params.registeredDay || '';
+  const desiredDay = params.desiredDay || '';
   let pageParam = 1;
-  if (params && 'page' in params && params.page) {
+  if (params.page) {
     pageParam = Number(params.page) || 1;
   }
   const currentPage = pageParam;
@@ -81,7 +83,7 @@ export default async function Page({ searchParams = {} }: {
               Desired Day:
               <select
                 name="desiredDay"
-                defaultValue={searchParams?.desiredDay || ''}
+                defaultValue={desiredDay || ''}
                 className="mt-1 border rounded px-2 py-1 w-full"
               >
                 <option value="">Any</option>
@@ -132,7 +134,7 @@ export default async function Page({ searchParams = {} }: {
               Registered Day:
               <select
                 name="registeredDay"
-                defaultValue={searchParams?.registeredDay || ''}
+                defaultValue={registeredDay || ''}
                 className="mt-1 border rounded px-2 py-1 w-full"
               >
                 <option value="">Any</option>

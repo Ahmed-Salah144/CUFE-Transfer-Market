@@ -143,3 +143,7 @@ const revenue = [
   { month: 'Nov', revenue: 3000 },
   { month: 'Dec', revenue: 4800 },
 ];
+
+// Only export sampleExchangeRequests for seeding
+import { sampleExchangeRequests } from './data';
+export { sampleExchangeRequests };

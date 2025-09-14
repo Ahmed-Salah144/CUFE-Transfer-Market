@@ -1,10 +1,5 @@
 export async function DELETE() {
-   try {
-      await sql`DELETE FROM exchange_requests`;
-      return Response.json({ message: 'All requests deleted.' });
-   } catch (error) {
-      return Response.json({ error }, { status: 500 });
-   }
+   return new Response('Not Found', { status: 404 });
 }
 import postgres from 'postgres';
 import bcrypt from 'bcrypt';
@@ -17,10 +12,5 @@ async function listRequests() {
 }
 
 export async function GET() {
-   try {
-      //return Response.json(await listRequests());
-      return Response.json(await listRequests());
-   } catch (error) {
-      return Response.json({ error }, { status: 500 });
-   }
+   return new Response('Not Found', { status: 404 });
 }

@@ -32,7 +32,7 @@ export default function RequestsTable({ requests }: { requests: any[] }) {
                   </div>
                   <div className="flex justify-end gap-2">
                     <UpdateRequest id={r.id} />
-                    <DeleteRequest id={r.id} />
+                    {/* <DeleteRequest id={r.id} /> */}
                   </div>
                 </div>
               </div>
@@ -99,7 +99,7 @@ export default function RequestsTable({ requests }: { requests: any[] }) {
                   <td className="whitespace-nowrap py-3 pl-6 pr-3">
                     <div className="flex justify-end gap-3">
                       <UpdateRequest id={r.id} />
-                      <DeleteRequest id={r.id} />
+                      {/* <DeleteRequest id={r.id} /> */}
                     </div>
                   </td>
                 </tr>

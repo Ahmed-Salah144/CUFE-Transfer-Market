@@ -5,11 +5,11 @@ import EditRequestForm from '@/app/ui/requests/edit-form';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 type EditPageProps = {
-  params: { id: string }
+  params: Promise<{ id: string }>
 };
 
 export default async function Page({ params }: EditPageProps) {
-  const { id } = params;
+  const { id } = await params;
   const request = await fetchExchangeRequestById(id);
   if (!request) {
     notFound();

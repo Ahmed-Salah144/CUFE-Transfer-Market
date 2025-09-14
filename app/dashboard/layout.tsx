@@ -3,10 +3,10 @@ import { Metadata } from 'next';
  
 export const metadata: Metadata = {
   title: {
-    template: '%s | Acme Dashboard',
-    default: 'Acme Dashboard',
+    template: '%s | CUFE Registeration Exchange Dashboard',
+    default: 'CUFE Registeration Exchange Dashboard',
   },
-  description: 'The official Next.js Learn Dashboard built with App Router.',
+  description: 'A Website to look for available timeslots to exchange for CUFE Registeration.',
   metadataBase: new URL('https://next-learn-dashboard.vercel.sh'),
 };
 export const experimental_ppr = true;
