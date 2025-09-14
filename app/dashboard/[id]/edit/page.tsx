@@ -1,10 +1,14 @@
 
+
 import { fetchExchangeRequestById } from '@/app/lib/data';
 import EditRequestForm from '@/app/ui/requests/edit-form';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+type EditPageProps = {
+  params: { id: string }
+};
 
-export default async function Page({ params }: { params: { id: string } }) {
+export default async function Page({ params }: EditPageProps) {
   const { id } = params;
   const request = await fetchExchangeRequestById(id);
   if (!request) {
